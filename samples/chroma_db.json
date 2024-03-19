@@ -1,0 +1,816 @@
+{
+    "name": "main",
+    "file": "D:\\chroma\\chroma.sqlite3",
+    "tables": [
+        {
+            "name": "migrations",
+            "columns": [
+                {
+                    "name": "dir",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "version",
+                    "type": "INTEGER",
+                    "not_null": true,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 2,
+                    "default_value": null
+                },
+                {
+                    "name": "filename",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "sql",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "hash",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_migrations_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "dir"
+                        },
+                        {
+                            "id": 1,
+                            "name": "version"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "embeddings_queue",
+            "columns": [
+                {
+                    "name": "seq_id",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "created_at",
+                    "type": "TIMESTAMP",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": "CURRENT_TIMESTAMP"
+                },
+                {
+                    "name": "operation",
+                    "type": "INTEGER",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "topic",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "id",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "vector",
+                    "type": "BLOB",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "encoding",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "metadata",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": []
+        },
+        {
+            "name": "collection_metadata",
+            "columns": [
+                {
+                    "name": "collection_id",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "key",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 2,
+                    "default_value": null
+                },
+                {
+                    "name": "str_value",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "int_value",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "float_value",
+                    "type": "REAL",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_collection_metadata_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "collection_id"
+                        },
+                        {
+                            "id": 1,
+                            "name": "key"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "segments",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "type",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "scope",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "topic",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "collection",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_segments_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "id"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "segment_metadata",
+            "columns": [
+                {
+                    "name": "segment_id",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "key",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 2,
+                    "default_value": null
+                },
+                {
+                    "name": "str_value",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "int_value",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "float_value",
+                    "type": "REAL",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_segment_metadata_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "segment_id"
+                        },
+                        {
+                            "id": 1,
+                            "name": "key"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "tenants",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_tenants_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "id"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "databases",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "name",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "tenant_id",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_databases_2",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "UNIQUE",
+                    "columns": [
+                        {
+                            "id": 2,
+                            "name": "tenant_id"
+                        },
+                        {
+                            "id": 1,
+                            "name": "name"
+                        }
+                    ]
+                },
+                {
+                    "name": "sqlite_autoindex_databases_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "id"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "collections",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "name",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "topic",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "dimension",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "database_id",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_collections_2",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "UNIQUE",
+                    "columns": [
+                        {
+                            "id": 1,
+                            "name": "name"
+                        },
+                        {
+                            "id": 4,
+                            "name": "database_id"
+                        }
+                    ]
+                },
+                {
+                    "name": "sqlite_autoindex_collections_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "id"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "embeddings",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "segment_id",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "embedding_id",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "seq_id",
+                    "type": "BLOB",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "created_at",
+                    "type": "TIMESTAMP",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": "CURRENT_TIMESTAMP"
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_embeddings_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "UNIQUE",
+                    "columns": [
+                        {
+                            "id": 1,
+                            "name": "segment_id"
+                        },
+                        {
+                            "id": 2,
+                            "name": "embedding_id"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "embedding_metadata",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "key",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 2,
+                    "default_value": null
+                },
+                {
+                    "name": "string_value",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "int_value",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "float_value",
+                    "type": "REAL",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "bool_value",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_embedding_metadata_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "id"
+                        },
+                        {
+                            "id": 1,
+                            "name": "key"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "max_seq_id",
+            "columns": [
+                {
+                    "name": "segment_id",
+                    "type": "TEXT",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "seq_id",
+                    "type": "BLOB",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_max_seq_id_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "segment_id"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "embedding_fulltext_search",
+            "columns": [
+                {
+                    "name": "string_value",
+                    "type": "",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": []
+        },
+        {
+            "name": "embedding_fulltext_search_data",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "block",
+                    "type": "BLOB",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": []
+        },
+        {
+            "name": "embedding_fulltext_search_idx",
+            "columns": [
+                {
+                    "name": "segid",
+                    "type": "",
+                    "not_null": true,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "term",
+                    "type": "",
+                    "not_null": true,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 2,
+                    "default_value": null
+                },
+                {
+                    "name": "pgno",
+                    "type": "",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_embedding_fulltext_search_idx_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "segid"
+                        },
+                        {
+                            "id": 1,
+                            "name": "term"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "embedding_fulltext_search_content",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "c0",
+                    "type": "",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": []
+        },
+        {
+            "name": "embedding_fulltext_search_docsize",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "sz",
+                    "type": "BLOB",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": []
+        },
+        {
+            "name": "embedding_fulltext_search_config",
+            "columns": [
+                {
+                    "name": "k",
+                    "type": "",
+                    "not_null": true,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "v",
+                    "type": "",
+                    "not_null": false,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "index": [
+                {
+                    "name": "sqlite_autoindex_embedding_fulltext_search_config_1",
+                    "is_partial": false,
+                    "is_unique": true,
+                    "origin": "PRIMARY KEY",
+                    "columns": [
+                        {
+                            "id": 0,
+                            "name": "k"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
