@@ -46,6 +46,7 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [],
             "index": [
                 {
                     "name": "sqlite_autoindex_migrations_1",
@@ -133,6 +134,7 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [],
             "index": []
         },
         {
@@ -177,6 +179,18 @@
                     "is_primary_key": false,
                     "primary_key_sequence": null,
                     "default_value": null
+                }
+            ],
+            "foreign_keys": [
+                {
+                    "id": 0,
+                    "seq": 0,
+                    "table": "collections",
+                    "from": "collection_id",
+                    "to": "id",
+                    "on_update": "NO ACTION",
+                    "on_delete": "CASCADE",
+                    "match": "NONE"
                 }
             ],
             "index": [
@@ -242,6 +256,18 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [
+                {
+                    "id": 0,
+                    "seq": 0,
+                    "table": "collection",
+                    "from": "collection",
+                    "to": "id",
+                    "on_update": "NO ACTION",
+                    "on_delete": "NO ACTION",
+                    "match": "NONE"
+                }
+            ],
             "index": [
                 {
                     "name": "sqlite_autoindex_segments_1",
@@ -301,6 +327,18 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [
+                {
+                    "id": 0,
+                    "seq": 0,
+                    "table": "segments",
+                    "from": "segment_id",
+                    "to": "id",
+                    "on_update": "NO ACTION",
+                    "on_delete": "CASCADE",
+                    "match": "NONE"
+                }
+            ],
             "index": [
                 {
                     "name": "sqlite_autoindex_segment_metadata_1",
@@ -332,6 +370,7 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [],
             "index": [
                 {
                     "name": "sqlite_autoindex_tenants_1",
@@ -373,6 +412,18 @@
                     "is_primary_key": false,
                     "primary_key_sequence": null,
                     "default_value": null
+                }
+            ],
+            "foreign_keys": [
+                {
+                    "id": 0,
+                    "seq": 0,
+                    "table": "tenants",
+                    "from": "tenant_id",
+                    "to": "id",
+                    "on_update": "NO ACTION",
+                    "on_delete": "CASCADE",
+                    "match": "NONE"
                 }
             ],
             "index": [
@@ -450,6 +501,18 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [
+                {
+                    "id": 0,
+                    "seq": 0,
+                    "table": "databases",
+                    "from": "database_id",
+                    "to": "id",
+                    "on_update": "NO ACTION",
+                    "on_delete": "CASCADE",
+                    "match": "NONE"
+                }
+            ],
             "index": [
                 {
                     "name": "sqlite_autoindex_collections_2",
@@ -525,6 +588,7 @@
                     "default_value": "CURRENT_TIMESTAMP"
                 }
             ],
+            "foreign_keys": [],
             "index": [
                 {
                     "name": "sqlite_autoindex_embeddings_1",
@@ -596,6 +660,18 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [
+                {
+                    "id": 0,
+                    "seq": 0,
+                    "table": "embeddings",
+                    "from": "id",
+                    "to": "id",
+                    "on_update": "NO ACTION",
+                    "on_delete": "NO ACTION",
+                    "match": "NONE"
+                }
+            ],
             "index": [
                 {
                     "name": "sqlite_autoindex_embedding_metadata_1",
@@ -635,6 +711,7 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [],
             "index": [
                 {
                     "name": "sqlite_autoindex_max_seq_id_1",
@@ -662,6 +739,7 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [],
             "index": []
         },
         {
@@ -684,6 +762,7 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [],
             "index": []
         },
         {
@@ -714,6 +793,7 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [],
             "index": [
                 {
                     "name": "sqlite_autoindex_embedding_fulltext_search_idx_1",
@@ -753,6 +833,7 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [],
             "index": []
         },
         {
@@ -775,6 +856,7 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [],
             "index": []
         },
         {
@@ -797,6 +879,7 @@
                     "default_value": null
                 }
             ],
+            "foreign_keys": [],
             "index": [
                 {
                     "name": "sqlite_autoindex_embedding_fulltext_search_config_1",

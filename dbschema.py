@@ -9,8 +9,11 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Process some integers.')
 
-    parser.add_argument('--dbfile', dest='dbfile', action='store_const', required=True,
-                        help='sum the integers (default: find the max)')
+    parser.add_argument('--dbfile', dest='dbfile', required=True,
+                        help='path to sqlite db file')
+
+    parser.add_argument('--output', dest='output', required=True, default='output.json',
+                        help='output file to store the schema')
 
     # Parse the arguments
     args = parser.parse_args()
