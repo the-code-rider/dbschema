@@ -4,6 +4,7 @@ import traceback
 class SQLLiteToSchema:
 
     def __init__(self, db_path):
+        # todo: allow users to pass their own conn anc cursor
         self.conn = None
         self.conn = sqlite3.connect(db_path)
         self.cursor = self.conn.cursor()
@@ -23,13 +24,17 @@ class SQLLiteToSchema:
             for table in tables:
 
                 table_info = {}
-                table_schema = self.table_schema(table[0])
+                table_coumns = self.table_schema(table[0])
 
                 index_info_list = self.index_detail(table[0])
 
+                foreign_keys = self.foreign_keys(table[0])
+
                 table_info['name'] = table[0]
-                table_info['columns'] = table_schema
+                table_info['columns'] = table_coumns
+                table_info['foreign_keys'] = foreign_keys
                 table_info['index'] = index_info_list
+
 
                 database_schema['tables'].append(table_info)
 
@@ -103,6 +108,19 @@ class SQLLiteToSchema:
             index_info_with_col_name.append(info_with_col_name)
 
         return index_info_with_col_name
+
+    def foreign_keys(self, table_name):
+        self.cursor.execute(f"PRAGMA foreign_key_list({table_name});")
+        foreign_keys = self.cursor.fetchall()
+        column_names = [description[0] for description in self.cursor.description]
+        foreign_keys_with_col_name = []
+        for key in foreign_keys:
+            fk_with_col_name =  {column_names[i]: value for i, value in enumerate(key)}
+            foreign_keys_with_col_name.append(fk_with_col_name)
+
+        return foreign_keys_with_col_name
+
+
 
     def table_schema(self, table_name):
         # This query retrieves the SQL CREATE statement for a given table

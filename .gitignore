@@ -5,6 +5,7 @@ __pycache__/
 
 sandbox.py
 notes.txt
+todo.md
 
 # C extensions
 *.so
