@@ -1,0 +1,76 @@
+{
+    "name": "main",
+    "file": "D:\\projects\\code\\sigi\\image_generation.db",
+    "tables": [
+        {
+            "name": "job_queue",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "prompt",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "status",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "foreign_keys": [],
+            "index": []
+        },
+        {
+            "name": "result",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "INTEGER",
+                    "not_null": false,
+                    "is_primary_key": true,
+                    "primary_key_sequence": 1,
+                    "default_value": null
+                },
+                {
+                    "name": "prompt",
+                    "type": "TEXT",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "timestamp",
+                    "type": "DATETIME",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                },
+                {
+                    "name": "image",
+                    "type": "BLOB",
+                    "not_null": true,
+                    "is_primary_key": false,
+                    "primary_key_sequence": null,
+                    "default_value": null
+                }
+            ],
+            "foreign_keys": [],
+            "index": []
+        }
+    ]
+}
